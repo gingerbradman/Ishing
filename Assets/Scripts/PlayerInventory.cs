@@ -92,16 +92,22 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    public void RemoveSelling()
+    public void RemoveSelling(StoreIsland island)
     {
-        for (int i = 0; i < inventory.Count; i++)
+        if(storeIsland == island)
         {
-            inventoryUI[i].transform.GetChild(3).gameObject.SetActive(false);
+            for (int i = 0; i < inventory.Count; i++)
+            {
+                inventoryUI[i].transform.GetChild(3).gameObject.SetActive(false);
+            }
         }
     }
 
     public void AllowBuying(List<GameObject> options, StoreIsland storeIslandInstance)
     {
+
+        RemoveBuying(storeIsland);
+
         storeIsland = storeIslandInstance;
 
         store.gameObject.SetActive(true);
@@ -124,14 +130,17 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    public void RemoveBuying()
+    public void RemoveBuying(StoreIsland island)
     {
-        for (int i = 0; i < storeItems.Count; i++)
+        if(storeIsland == island)
         {
-            EmptyStoreSpace(i);
-        }
+            for (int i = 0; i < storeItems.Count; i++)
+            {
+                EmptyStoreSpace(i);
+            }
 
-        store.gameObject.SetActive(false);
+            store.gameObject.SetActive(false);
+        }
     }
 
     public int FindFirstEmptySlot()

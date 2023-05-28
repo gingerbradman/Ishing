@@ -27,8 +27,8 @@ public class StoreIsland : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            playerInventory.RemoveSelling();
-            playerInventory.RemoveBuying();
+            playerInventory.RemoveSelling(this);
+            playerInventory.RemoveBuying(this);
         }
     }
 }
