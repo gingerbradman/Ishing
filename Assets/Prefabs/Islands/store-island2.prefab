@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2347484597515352391}
   - component: {fileID: 2347484597515352441}
   - component: {fileID: 2347484597515352390}
+  - component: {fileID: 6754893502660486960}
   m_Layer: 0
   m_Name: LocalFish
   m_TagString: Untagged
@@ -65,6 +66,22 @@ MonoBehaviour:
   - {fileID: 5124794369897616283, guid: 930dc48a41c7c294abf12a268cacbde3, type: 3}
   - {fileID: 5124794369897616283, guid: a564fc3532141d5408b0e89c5d77edc1, type: 3}
   - {fileID: 5124794369897616283, guid: aeb11fe8c9f7e4040936207234e66b4e, type: 3}
+--- !u!114 &6754893502660486960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2347484597515352388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0de581e9fd784642b5545c26d0e55d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storeItems:
+  - {fileID: 6906929772387677181, guid: dc79cc4a9706d674cb2c338d49495911, type: 3}
+  - {fileID: 6906929772387677181, guid: 78ac931d2a7266642a28093468318875, type: 3}
+  - {fileID: 6906929772387677181, guid: 3406b4a5085ce624698548048d26cd26, type: 3}
 --- !u!1 &2347484597967316750
 GameObject:
   m_ObjectHideFlags: 0

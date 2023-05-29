@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2347484597515352391}
   - component: {fileID: 2347484597515352441}
   - component: {fileID: 2347484597515352390}
+  - component: {fileID: 852692257}
   m_Layer: 0
   m_Name: LocalFish
   m_TagString: Untagged
@@ -48,7 +49,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1
 --- !u!114 &2347484597515352390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,6 +66,22 @@ MonoBehaviour:
   - {fileID: 5124794369897616283, guid: 930dc48a41c7c294abf12a268cacbde3, type: 3}
   - {fileID: 5124794369897616283, guid: a564fc3532141d5408b0e89c5d77edc1, type: 3}
   - {fileID: 5124794369897616283, guid: aeb11fe8c9f7e4040936207234e66b4e, type: 3}
+--- !u!114 &852692257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2347484597515352388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0de581e9fd784642b5545c26d0e55d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storeItems:
+  - {fileID: 6906929772387677181, guid: cbe68b3d6c0fff840b3a1441e1021131, type: 3}
+  - {fileID: 6906929772387677181, guid: 1c358e7a985280a439bb20bb8115edb3, type: 3}
+  - {fileID: 6906929772387677181, guid: 37cc6b28bfae8d440befd7248d11b369, type: 3}
 --- !u!1 &2347484597967316750
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +108,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2347484597967316750}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -17.1, y: 1.15, z: 0.11934531}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0

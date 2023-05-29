@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: New Engine
-  image: {fileID: 21300000, guid: 418ea865e19eb51499a1b16510f000e1, type: 3}
-  buyValue: 0
+  image: {fileID: 21300000, guid: 8132c6f0004215442aa5d86e7e7f9742, type: 3}
+  buyValue: 2000

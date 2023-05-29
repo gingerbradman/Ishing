@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Better Reel
-  image: {fileID: 21300000, guid: 418ea865e19eb51499a1b16510f000e1, type: 3}
-  buyValue: 0
+  image: {fileID: 21300000, guid: ee86af3920bf3ca4db479be05bca6574, type: 3}
+  buyValue: 2000

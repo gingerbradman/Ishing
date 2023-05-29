@@ -11,13 +11,15 @@ public class PlayerInventory : MonoBehaviour
     private int gold;
     public Fish emptySpace;
     public Item emptyItem;
-    private int inventorySpaces = 3;
-    private int inventoryCounter = 0;
+    public int inventorySpaces = 3;
+    public int inventoryCounter = 0;
     public void SetInventorySpaces(int x){inventorySpaces = x;}
     public int GetInventorySpaces(){return inventorySpaces;}
 
     public List<GameObject> inventory;
     public List<GameObject> inventoryUI;
+    
+    public List<GameObject> inventoryUpgradeUI;
     public List<GameObject> GetInventory(){return inventory;}
 
     public List<GameObject> storeItems;
@@ -25,10 +27,14 @@ public class PlayerInventory : MonoBehaviour
     public StoreIsland storeIsland;
 
     public GameObject goldUI;
+    public ItemManager itemManager;
+    public double fishSellMultiplier;
 
     private void Start() 
     {
+        itemManager = GetComponent<ItemManager>();
         GoldChange();
+        fishSellMultiplier = 1;
     }
 
     public void AddToInventory(GameObject x)
@@ -57,7 +63,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void SellFishFromInventory(int x)
     {
-        gold += inventory[x].GetComponent<Fish>().sellValue;
+        gold += (int)(inventory[x].GetComponent<Fish>().sellValue * fishSellMultiplier);
 
         GoldChange();
 
@@ -77,16 +83,16 @@ public class PlayerInventory : MonoBehaviour
 
             GoldChange();
 
+            itemManager.BuyItem(storeItems[x].GetComponent<Item>().name);
+
             storeIsland.storeItems[x] = emptyItem.gameObject;
             EmptyStoreSpace(x);
-
-            //Do Item Logic
         }
     }
 
     public void AllowSelling()
     {
-        for (int i = 0; i < inventory.Count; i++)
+        for (int i = 0; i < inventorySpaces; i++)
         {
             inventoryUI[i].transform.GetChild(3).gameObject.SetActive(true);
         }
@@ -96,7 +102,7 @@ public class PlayerInventory : MonoBehaviour
     {
         if(storeIsland == island)
         {
-            for (int i = 0; i < inventory.Count; i++)
+            for (int i = 0; i < inventorySpaces; i++)
             {
                 inventoryUI[i].transform.GetChild(3).gameObject.SetActive(false);
             }
@@ -120,7 +126,7 @@ public class PlayerInventory : MonoBehaviour
 
             Item item = storeItems[i].GetComponent<Item>();
 
-            storeUI.GetComponentInChildren<TextMeshProUGUI>().text = item.name;
+            storeUI.GetComponentInChildren<TextMeshProUGUI>().text = item.name + " " + item.buyValue;
             storeUI.transform.GetChild(1).GetComponent<Image>().sprite = item.image;
 
             if(item.name != "")
@@ -145,7 +151,7 @@ public class PlayerInventory : MonoBehaviour
 
     public int FindFirstEmptySlot()
     {
-        for (int i = 0; i < inventory.Count; i++)
+        for (int i = 0; i < inventorySpaces; i++)
         {
             if(inventory[i].GetComponent<Fish>().name == "")
             {
@@ -171,7 +177,22 @@ public class PlayerInventory : MonoBehaviour
         goldUI.GetComponentInChildren<TextMeshProUGUI>().text = "" + gold;
     }
     
+    public void upgradeStore()
+    {
 
+        inventoryUpgradeUI[0].gameObject.transform.parent.gameObject.SetActive(true);
+
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            inventoryUpgradeUI[i].GetComponentInChildren<TextMeshProUGUI>().text = inventory[i].GetComponent<Fish>().name + " " + inventory[i].GetComponent<Fish>().stars;
+            inventoryUpgradeUI[i].transform.GetChild(1).GetComponent<Image>().sprite = inventory[i].GetComponent<Fish>().fimage;
+        }
+
+        inventorySpaces = 5;
+
+        inventoryUI[0].gameObject.transform.parent.gameObject.SetActive(false);
+        inventoryUI = inventoryUpgradeUI;
+    }
 
 
 }

@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public bool isFishing = false;
     public bool waitingForFish = false;
+    public float biteWaitMax;
 
     private float biteTime = 3f;
 
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         fishManager = GetComponent<FishManager>();
+        biteWaitMax = 10f;
     }
 
     // Update is called once per frame
@@ -76,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator WaitingForBite()
     {
-        float randomWaitTime = Random.Range(3f, 10f);
+        float randomWaitTime = Random.Range(3f, biteWaitMax);
 
         yield return new WaitForSeconds(randomWaitTime);
 
