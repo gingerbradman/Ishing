@@ -186,8 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishList:
-  - {fileID: 5124794369897616283, guid: 930dc48a41c7c294abf12a268cacbde3, type: 3}
-  - {fileID: 5124794369897616283, guid: 3340e715a76c9654d901896cc3538c78, type: 3}
-  - {fileID: 5124794369897616283, guid: 8a5533288224456459d83cb7a037aebc, type: 3}
-  - {fileID: 5124794369897616283, guid: e28c6f3136a722745b2d805e0792cd81, type: 3}
   - {fileID: 5124794369897616283, guid: ac5fd5d716efbc7478e29424819f3aaf, type: 3}
+  - {fileID: 5124794369897616283, guid: b43ac18ab1c123748893c4b4d76f9acf, type: 3}
+  - {fileID: 5124794369897616283, guid: f176f34a210f923439a7e04aea5a41a4, type: 3}
+  - {fileID: 5124794369897616283, guid: 25d988be62288be43b7d864c5a0d5a0f, type: 3}

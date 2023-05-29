@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5124794369897616285}
   - component: {fileID: 5124794369897616282}
   m_Layer: 0
-  m_Name: Axefish
+  m_Name: Tuna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ee033e64791c1546a17e9b10b2b7cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Axefish
-  fimage: {fileID: 21300000, guid: 9c31142a8f3bf714fa20b2a6d12ee177, type: 3}
-  stars: '****'
-  sellValue: 1300
-  swimUpSpeed: 3
-  swimDownSpeed: -5
-  sliderValue: 600
+  name: Tuna
+  fimage: {fileID: 21300000, guid: f0fa81236401d65469182cc813c960cf, type: 3}
+  stars: '**'
+  sellValue: 500
+  swimUpSpeed: 2
+  swimDownSpeed: -2
+  sliderValue: 400

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5124794369897616285}
   - component: {fileID: 5124794369897616282}
   m_Layer: 0
-  m_Name: Lumineon
+  m_Name: Flounder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ee033e64791c1546a17e9b10b2b7cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Lumineon
-  fimage: {fileID: 21300000, guid: 9ca0b5fc45ae9d943a11885c009d1f01, type: 3}
-  stars: '****'
-  sellValue: 1500
-  swimUpSpeed: 5
-  swimDownSpeed: -5
-  sliderValue: 350
+  name: Flounder
+  fimage: {fileID: 21300000, guid: f7dde45bd769d6047a0be1fc985166f6, type: 3}
+  stars: '**'
+  sellValue: 250
+  swimUpSpeed: 1.5
+  swimDownSpeed: -1
+  sliderValue: 500

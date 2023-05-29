@@ -43,7 +43,7 @@ public class PlayerInventory : MonoBehaviour
 
             if(index >= 0)
             {
-                inventoryUI[index].GetComponentInChildren<TextMeshProUGUI>().text = fish.name;
+                inventoryUI[index].GetComponentInChildren<TextMeshProUGUI>().text = fish.name + " " + fish.stars;
                 inventoryUI[index].transform.GetChild(1).GetComponent<Image>().sprite = fish.fimage;
                 inventory[index] = x;
                 inventoryCounter++;

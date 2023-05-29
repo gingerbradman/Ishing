@@ -135,6 +135,7 @@ public class PlayerController : MonoBehaviour
         isFishing = false;
         Destroy(bobberInstance);
         fishingMiniGamePrefab.SetActive(false);
+        StopAllCoroutines();
     }
 
     void FixedUpdate()

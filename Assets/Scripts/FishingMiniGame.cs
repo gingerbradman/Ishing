@@ -16,7 +16,6 @@ public class FishingMiniGame : MonoBehaviour
     public float hookRaiseSpeed;
     public float hookFallSpeed;
 
-    [SerializeField]
     private float fillTime = 0f;
 
     [SerializeField]
