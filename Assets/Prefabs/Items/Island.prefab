@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Private Island
   image: {fileID: 1021408888, guid: f362d548b4b5ed4449cc317abb1c732d, type: 3}
-  buyValue: 10000
+  buyValue: 20000
