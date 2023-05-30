@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -29,6 +30,9 @@ public class PlayerInventory : MonoBehaviour
     public GameObject goldUI;
     public ItemManager itemManager;
     public double fishSellMultiplier;
+
+    public AudioSource buySound;
+    public AudioSource sellSound;
 
     private void Start() 
     {
@@ -66,6 +70,7 @@ public class PlayerInventory : MonoBehaviour
         gold += (int)(inventory[x].GetComponent<Fish>().sellValue * fishSellMultiplier);
 
         GoldChange();
+        sellSound.Play();
 
         inventory[x] = emptySpace.gameObject;
         inventoryUI[x].GetComponentInChildren<TextMeshProUGUI>().text = "";
@@ -82,6 +87,7 @@ public class PlayerInventory : MonoBehaviour
             gold -= cost;
 
             GoldChange();
+            buySound.Play();
 
             itemManager.BuyItem(storeItems[x].GetComponent<Item>().name);
 

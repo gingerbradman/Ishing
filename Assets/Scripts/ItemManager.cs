@@ -77,7 +77,7 @@ public class ItemManager : MonoBehaviour
 
     void BoughtIsland()
     {
-        Debug.Log("Congrats! You won the game!");
+        playerController.WinGame();
     }
 
     void BoughtSpace()

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,6 +24,11 @@ public class PlayerController : MonoBehaviour
 
     Vector2 movement;
     Quaternion targetRotation;
+
+    public AudioSource bobberSound;
+    public AudioSource caughtSound;
+    public AudioSource biteSound;
+    public AudioSource lostSound;
 
     // Start is called before the first frame update
     void Start()
@@ -70,6 +77,7 @@ public class PlayerController : MonoBehaviour
 
         if(isFishing)
         {
+            bobberSound.Play();
             bobberInstance.GetComponent<FloatingAnimation>().AtRest();
             waitingForFish = true;
             StartCoroutine(WaitingForBite());
@@ -93,6 +101,7 @@ public class PlayerController : MonoBehaviour
         bobberInstance.gameObject.transform.GetChild(0).gameObject.SetActive(true);
 
         StartCoroutine(TimeForBite());
+        biteSound.Play();
 
         yield return StartCoroutine(WaitForKeyDown(KeyCode.Space));
     }
@@ -102,6 +111,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(biteTime);
 
         StopFishing();
+        lostSound.Play();
         StopAllCoroutines();
         Debug.Log("Fish Missed!");
     }
@@ -123,12 +133,14 @@ public class PlayerController : MonoBehaviour
     public void CaughtFish(GameObject x)
     {
         StopFishing();
+        caughtSound.Play();
         playerInventory.AddToInventory(x);
     }
 
     public void LostFish()
     {
         StopFishing();
+        lostSound.Play();
         Debug.Log("Fish got away!");
     }
 
@@ -144,5 +156,10 @@ public class PlayerController : MonoBehaviour
     {
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
         rb.MoveRotation(targetRotation);
+    }
+
+    public void WinGame()
+    {
+        SceneManager.LoadScene(2);
     }
 }
