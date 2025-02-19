@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public GameObject bobberInstance;
     float bobberCastPower = 5f;
     public GameObject fishingMiniGamePrefab;
+    public GameObject battleMiniGamePrefab;
     public float speed = 5f;
     public Rigidbody2D rb;
     public bool isFishing = false;
@@ -21,6 +22,10 @@ public class PlayerController : MonoBehaviour
     public float biteWaitMax;
 
     private float biteTime = 3f;
+
+    public GameObject exclamationMark;
+    private float battleAlertTime = 1f;
+    private bool haltPlayerControls = false;
 
     Vector2 movement;
     Quaternion targetRotation;
@@ -35,11 +40,17 @@ public class PlayerController : MonoBehaviour
     {
         fishManager = GetComponent<FishManager>();
         biteWaitMax = 10f;
+        exclamationMark = GameObject.Find("BattleExclamationMark");
+        exclamationMark.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(haltPlayerControls)
+        {
+            return;
+        }
 
         if(Input.GetKeyDown("space") && !isFishing)
         {
@@ -161,5 +172,31 @@ public class PlayerController : MonoBehaviour
     public void WinGame()
     {
         SceneManager.LoadScene(2);
+    }
+
+    public void BattleAlert()
+    {
+        movement = Vector2.zero;
+        haltPlayerControls = true;
+        exclamationMark.SetActive(true);
+        exclamationMark.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
+        StartCoroutine(BattleAlertCO());
+    }
+
+    IEnumerator BattleAlertCO()
+    {
+        yield return new WaitForSeconds(battleAlertTime);
+
+        StopFishing(); 
+        lostSound.Play();
+        StopAllCoroutines();
+        StartBattle();
+        Debug.Log("Battle Starts!");
+    }
+
+    public void StartBattle()
+    {
+        exclamationMark.SetActive(false);
+        battleMiniGamePrefab.SetActive(true); 
     }
 }
