@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     float bobberCastPower = 5f;
     public GameObject fishingMiniGamePrefab;
     public GameObject battleMiniGamePrefab;
+    public Enemy battleEnemy;
     public float speed = 5f;
     public Rigidbody2D rb;
     public bool isFishing = false;
@@ -174,8 +175,9 @@ public class PlayerController : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
-    public void BattleAlert()
+    public void BattleAlert(Enemy enemy)
     {
+        battleEnemy = enemy;
         movement = Vector2.zero;
         haltPlayerControls = true;
         exclamationMark.SetActive(true);
@@ -197,6 +199,21 @@ public class PlayerController : MonoBehaviour
     public void StartBattle()
     {
         exclamationMark.SetActive(false);
+        battleMiniGamePrefab.GetComponent<BattleMinigame>().SetEnemy(battleEnemy);
         battleMiniGamePrefab.SetActive(true); 
+    }
+
+    public void LoseBattle()
+    {
+        battleMiniGamePrefab.SetActive(false);
+        haltPlayerControls = false;
+        Destroy(this.gameObject);
+    }
+
+    public void EndBattle()
+    {
+        Destroy(battleEnemy.gameObject);
+        haltPlayerControls = false;
+        battleMiniGamePrefab.SetActive(false);
     }
 }

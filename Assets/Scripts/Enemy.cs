@@ -5,13 +5,38 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public string enemyName;
 
-    GameObject player;
-    public float speed;
+    #region EnemyInOverworld
+    public float movementSpeed;
     public float stoppingDistance;
     public Vector2 startingLocation;
     [SerializeField] public Vector2 targetLocation;
     public float visualRange;
+    GameObject player;
+    #endregion
+    
+    #region EnemyInBattle
+    public int health;
+    public int damage;
+    public float battleSpeed;
+    public Vector2 movementDirection;
+    public float directionChangeTime;
+    public float latestDirectionChangeTime;
+    public float attackSpeed;
+    public EnemyState enemyState;
+    public enum EnemyState
+    {
+        Moving,
+        Idle,
+        Attack,
+        Other
+    }
+    public Sprite enemySprite;
+    public GameObject enemyWeapon;
+
+    #endregion
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +57,7 @@ public class Enemy : MonoBehaviour
     {
         if(Vector2.Distance(transform.position, target) > stoppingDistance)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target, movementSpeed * Time.deltaTime);
         }
     }
 
@@ -44,7 +69,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            transform.position = Vector2.MoveTowards(transform.position, startingLocation, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, startingLocation, movementSpeed * Time.deltaTime);
         }
     }
 
@@ -52,7 +77,7 @@ public class Enemy : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            player.GetComponent<PlayerController>().BattleAlert();
+            player.GetComponent<PlayerController>().BattleAlert(this);
         }
     }
 }
