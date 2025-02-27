@@ -54,10 +54,9 @@ MonoBehaviour:
   visualRange: 6
   health: 3
   damage: 1
-  battleSpeed: 2.5
+  battleSpeed: 0.2
   movementDirection: {x: 0, y: 0}
-  directionChangeTime: 0.1
-  latestDirectionChangeTime: 0
+  directionChangeTime: 0.7
   attackSpeed: 0
   enemyState: 0
   enemySprite: {fileID: 0}

@@ -12,11 +12,24 @@ public class Projectile : MonoBehaviour
     public float lifeTime = 2f;
     public bool isEnemyProjectile;
     public int damage = 1;
+    public enum ProjectileType
+    {
+        Player,
+        Enemy
+    }
+    public ProjectileType projectileType;
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.up * speed * Time.deltaTime);
+        if(projectileType == ProjectileType.Player)
+        {
+            transform.Translate(Vector2.up * speed * Time.deltaTime);
+        }
+        else
+        {
+            transform.Translate(Vector2.down * speed * Time.deltaTime);
+        }
 
         lifeTime -= Time.deltaTime;
         if (lifeTime <= 0)
@@ -27,7 +40,7 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (isEnemyProjectile)
+        if (projectileType == ProjectileType.Enemy)
         {
             if (other.CompareTag("PlayerBattleHandle"))
             {

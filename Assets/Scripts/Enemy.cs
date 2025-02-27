@@ -22,7 +22,6 @@ public class Enemy : MonoBehaviour
     public float battleSpeed;
     public Vector2 movementDirection;
     public float directionChangeTime;
-    public float latestDirectionChangeTime;
     public float attackSpeed;
     public EnemyState enemyState;
     public enum EnemyState
